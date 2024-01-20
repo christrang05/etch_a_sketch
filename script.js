@@ -1,23 +1,29 @@
-const container = document.querySelector('.container');
-const addButton = document.querySelector('.grid');
+const gridContainer = document.getElementById('grid-container');
+const changeSizeButton = document.getElementById('grid-size');
 
-function createSquare() {
-    const newSquare = document.createElement('div');
-    newSquare.classList.add('new-square');
-    container.appendChild(newSquare);
-}
+function createSquare(size) {
+    gridContainer.innerHTML = '';
+    const squareSize = 'calc(100vh / ${size})';
 
-addButton.addEventListener('click', adjustGrid);
-function adjustGrid() {
-    let numSquares = prompt("How many squares per side? (# must be between 1-100)");
-    numSquares = parseInt(numSquares, 10);
-    if (!isNaN(numSquares) && numSquares >= 1 && numSquares <= 100) {
-        for (let i = 0; i < numSquares; i++) {
-            createSquare();
-        }
-    } else {
-        alert("Please enter a valid number.");
+    for (let i = 0; i < size * size; i++) {
+        const newSquare = document.createElement('div');
+        newSquare.classList.add('new-square');
+        newSquare.style.width = squareSize;
+        newSquare.style.height = squareSize;
+        gridContainer.appendChild(newSquare);
     }
 }
 
+function adjustGrid() {
+    let newSize = prompt("How many squares per side? (# must be between 1-100)");
+    newSize = parseInt(newSize, 10);
+    if (!isNaN(newSize) && newSize >= 1 && newSize <= 100) {
+        createSquare(newSize);
+    } else {
+        alert("Please enter a valid number between 1 and 100.");
+    }
+}
+
+changeSizeButton.addEventListener('click', adjustGrid);
+createSquare(16);
 
