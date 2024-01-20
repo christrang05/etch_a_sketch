@@ -24,6 +24,18 @@ function createGrid(size) {
         square.style.width = `${squareSize}px`;
         square.style.height = `${squareSize}px`;
         square.classList.add('square');
+        // square hover color 
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = getRandomRgbColor();
+        })
         container.appendChild(square);
     }
 }
+
+function getRandomRgbColor() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `rgb(${red}, ${green}, ${blue}, 1)`;
+}
+
