@@ -1,11 +1,20 @@
-#grid-container {
+body {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
     height: 100vh;
+    overflow: hidden;
 }
 
-.new-square {
-    flex: 1 0 calc(25% - 2px);
-    height: 60px;
-    border: 1px solid #ccc;
+#gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square {
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
 }
